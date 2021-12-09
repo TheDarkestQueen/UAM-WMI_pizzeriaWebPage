@@ -54,17 +54,17 @@ export function addSauceToOrder(sauce) {
     };
 }
 
-export function removePizzaFromOrder(pizza) {
+export function removePizzaFromOrder(index) {
     return {
         type: "REMOVE_PIZZA_FROM_ORDER",
-        pizza: pizza
+        index: index
     };
 }
 
-export function removeSauceFromOrder(sauce) {
+export function removeSauceFromOrder(index) {
     return {
         type: "REMOVE_SAUCE_FROM_ORDER",
-        sauce: sauce
+        index: index
     };
 }
 

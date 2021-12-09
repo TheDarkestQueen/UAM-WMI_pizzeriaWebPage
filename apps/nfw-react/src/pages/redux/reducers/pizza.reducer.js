@@ -73,23 +73,13 @@ export function pizzaReducer(
             return {...state};
 
         case 'REMOVE_PIZZA_FROM_ORDER':
-            for( let i = 0; i < state.order.pizza.length; i++) {
-                if(state.order.pizza[i].name == action.pizza.name) {
-                    state.order.pizza.splice(i, 1);
-                    state.order.total = state.order.total - action.pizza.price;
-                    break;
-                }
-            }
+            state.order.total = state.order.total - state.order.pizza[action.index].price;
+            state.order.pizza.splice(action.index, 1);
             return {...state};
 
         case 'REMOVE_SAUCE_FROM_ORDER':
-            for( let i = 0; i < state.order.sauce.length; i++) {
-                if(state.order.sauce[i].name == action.sauce.name) {
-                    state.order.sauce.splice(i, 1);
-                    state.order.total = state.order.total - action.sauce.price;
-                    break;
-                }
-            }
+            state.order.total = state.order.total - state.order.sauce[action.index].price;
+            state.order.sauce.splice(action.index, 1);
             return {...state};
 
         case 'MAKE_ORDER':
