@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+* {
+    box-sizing: border-box;
+}
 
 body {
     background: #242424;
@@ -26,6 +29,9 @@ body {
             font-size: 1.4em;
             padding-right: 2em;
         }
+        li:last-child {
+            padding-right: 1em;
+        }
     }
 }
 
@@ -44,6 +50,69 @@ a {
     text-decoration: none;
 }
 
-.pizza-list {
-    list-style: none;
+.list-sector {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .pizza-list {
+        list-style: none;
+        
+        width: 100%;
+        max-width: 1500px;
+        margin: 0;
+        padding: 0 20px 0 20px;
+        
+        li {
+            display: flex;
+            color: #888585;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #0e0e0e;
+
+            .pizza-view-button-order {
+                width: 100%;
+                margin-left: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+
+                .container-pizza-view {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+    
+                    .column {
+                        .pizza-name {
+                            font-size: 1.4em;
+                            font-weight: bold;
+                            margin-bottom: 20px;
+                        }
+                    }
+                    .pizza-price {
+                        font-size: 1.4em;
+                    }
+                }
+            }
+            .pizza-img {
+                width: 30%;
+                min-width: 200px;
+            }
+        }
+    }
 }
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    background: #888585;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+

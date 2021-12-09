@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 
 import '../pages/styles/main.scss';
@@ -19,11 +20,13 @@ export const App = () => {
       <NavigationBar></NavigationBar>
         <Banner></Banner>
         <div>
-          <Route path="/mainPage" component={MainPage}/>
-          <Route path="/pizza" component={PizzaPage}/>
-          <Route path="/order" component={OrderPage}/>
-          <Route path="/sauces" component={PizzaPage}/>
-          <Route path="**" component={MainPage}/>
+          <Switch>
+            <Route path="/mainPage" component={MainPage}/>
+            <Route path="/pizza" component={PizzaPage}/>
+            <Route path="/order" component={OrderPage}/>
+            <Route path="/sauces" component={PizzaPage}/>
+            <Route path="*" component={MainPage}/>
+          </Switch>
         </div>
       </Router>
     </div>

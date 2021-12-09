@@ -10,13 +10,13 @@ function NavigationBar() {
 
     return (
         <div className="navbar">
-            <div class="container">
-                <Link class="main-page" to="/mainPage"> Main Page </Link>
+            <div className="container">
+                <Link className="main-page" to="/mainPage"> Main Page </Link>
 
                 {/* <img id="mobile-menu" class="mobile-menu" src={menu} alt="navigation"></img> */}
                 <nav>
                     {/* <img id="mobile-exit-menu" class="mobile-menu-exit" src={exit} alt="exit navigation"></img> */}
-                    <ul class="menu-list">
+                    <ul className="menu-list">
                         <li><Link to="/pizza"> Pizza </Link></li>
                         <li><Link to="/sauces"> Sauces </Link></li>
                         <li><Link to="/order"> Order </Link></li>

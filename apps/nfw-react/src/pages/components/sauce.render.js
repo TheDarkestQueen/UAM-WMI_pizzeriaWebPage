@@ -4,9 +4,9 @@ function SauceRender() {
 
     return (
         <div>
-            <section class="list-sector">
-                <div class="container">
-                    <ul class="sauce-list">
+            <section className="list-sector">
+                <div className="container">
+                    <ul className="sauce-list">
                         <li></li>
                     </ul>
                 </div>
