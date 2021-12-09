@@ -35,6 +35,16 @@ body {
     }
 }
 
+.main-page {
+    h1 {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 .container {
     display: flex;
     align-items: center;
@@ -102,6 +112,10 @@ a {
                 width: 30%;
                 min-width: 200px;
             }
+            .sauce-img {
+                width: 20%;
+                min-width: 100px;
+            }
         }
     }
 }
@@ -128,8 +142,21 @@ button {
     text-transform: uppercase;
     cursor: pointer;
     padding: 20px 40px;
+    margin-bottom: 40px;
     &:hover {
         background: #b11d1d;
     }
 }
 
+h1 {
+    color: #888585;
+    margin-top: 40px;
+    margin-bottom: 0;;
+}
+
+.order-status {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

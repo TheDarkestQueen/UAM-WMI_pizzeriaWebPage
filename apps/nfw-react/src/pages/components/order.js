@@ -1,7 +1,8 @@
 import React from "react";
 import {useDispatch, useSelector} from 'react-redux'
-import {getPizzaList, getIngredientList, removePizzaFromOrder, makeOrder} from '../redux/actions/pizza.actions'
+import {getPizzaList, getIngredientList, getSauceList, removePizzaFromOrder, removeSauceFromOrder, makeOrder} from '../redux/actions/pizza.actions'
 import pizzaImg from '../assets/pizza1.jpg'
+import sauceImg from '../assets/sauces.jpg'
 import { useEffect, useState } from "react";
 import { bindActionCreators } from "redux";
 
@@ -13,6 +14,7 @@ function OrderListRender() {
     useEffect(() => {
         dispatch(getPizzaList(dispatch));
         dispatch(getIngredientList(dispatch));
+        dispatch(getSauceList(dispatch));
         console.log(data.order);
     }, [])
 
@@ -28,12 +30,28 @@ function OrderListRender() {
         return pizzaIngredients.join(", ");
     }
 
+    if(data.orderStatus == "In progress") {
+        return (
+        <div className="order-status">
+            <h1>Loading...</h1>
+        </div>
+        )
+    } else if(data.orderStatus == "Success") {
+        return (
+        <div className="order-status">
+            <h1>Ordered successfully!</h1>
+        </div>
+        )
+    }
+
     return (
         <div>
             <section className="list-sector">
+            {(data.order.pizza.length != 0)? <h1> Final cost: {data.order.total} zł </h1>
+                : <h1> There is nothing in the order </h1>}
                 <ul className="pizza-list">
-                    {data.order.pizza.map(pizza => (
-                        <li key={pizza.id}>
+                    {data.order.pizza.map((pizza, index) => (
+                        <li key={index}>
                             <img className="pizza-img" src={pizzaImg} alt="pizza photo"></img>
                             <div className="pizza-view-button-order">
                                 <div className="container-pizza-view">
@@ -50,7 +68,25 @@ function OrderListRender() {
                         </li>
                     ))}
                 </ul>
-                <button className="order-button" onClick={ () => dispatch(makeOrder(dispatch)) }>Make Order</button>
+            </section>
+            <section className="list-sector">
+                <ul className="pizza-list">
+                    {data.order.sauce.map((sauce, index) => (
+                        <li key={index}>
+                            <img className="sauce-img" src={sauceImg} alt="sauces photo"></img>
+                            <div className="pizza-view-button-order">
+                                <div className="container-pizza-view">
+                                    <div className="column">
+                                        <div className="pizza-name"> {sauce.name} </div>
+                                    </div>
+                                    <div className="pizza-price"> {sauce.price} zł </div>
+                                </div>
+                                <button onClick={ () => dispatch(removeSauceFromOrder(sauce)) }>Remove from order</button>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+                {(data.order.pizza.length != 0)?<button className="order-button" onClick={ () => dispatch(makeOrder(dispatch)) }>Make Order</button>: ""}
             </section>
         </div>
     )

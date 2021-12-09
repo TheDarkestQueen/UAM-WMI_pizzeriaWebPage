@@ -9,8 +9,9 @@ export function pizzaReducer(
             pizza: [],
             sauce: [],
             total: 0
-        }}, 
-    action) {
+        },
+        orderStatus: ""
+    }, action) {
     switch (action.type) {
         case 'GET_PIZZA_LIST':
 
@@ -58,11 +59,15 @@ export function pizzaReducer(
             return {...state};
 
         case 'ADD_PIZZA_TO_ORDER':
+            state.orderStatus = "";
             state.order.pizza.push(action.pizza);
+            state.order.pizza.sort((a, b) => a.name > b.name);
             state.order.total = state.order.total + action.pizza.price;
             return {...state};
         
         case 'ADD_SAUCE_TO_ORDER':
+            state.orderStatus = "";
+            action.sauce.count = 1;
             state.order.sauce.push(action.sauce);
             state.order.total = state.order.total + action.sauce.price;
             return {...state};
@@ -72,6 +77,7 @@ export function pizzaReducer(
                 if(state.order.pizza[i].name == action.pizza.name) {
                     state.order.pizza.splice(i, 1);
                     state.order.total = state.order.total - action.pizza.price;
+                    break;
                 }
             }
             return {...state};
@@ -81,11 +87,13 @@ export function pizzaReducer(
                 if(state.order.sauce[i].name == action.sauce.name) {
                     state.order.sauce.splice(i, 1);
                     state.order.total = state.order.total - action.sauce.price;
+                    break;
                 }
             }
             return {...state};
 
         case 'MAKE_ORDER':
+            state.orderStatus = "In progress";
             if(state.order.sauce.length == 0) {
                 state.order.sauce = null;
             }
@@ -100,7 +108,7 @@ export function pizzaReducer(
             .then(response => {
                 return response.json();
             })
-            .then(resp_message => {
+            .then( () => {
                 action.dispatch(successfulOrder());
             })
 
@@ -110,6 +118,7 @@ export function pizzaReducer(
             return {...state};
 
         case 'SUCCESSFUL_ORDER':
+            state.orderStatus = "Success";
             return {...state};
 
         default:

@@ -9,7 +9,8 @@ import '../pages/styles/main.scss';
 
 import NavigationBar from '../pages/components/navigation.bar';
 import MainPage from '../pages/main.page';
-import PizzaPage from '../pages/pizza_sauce.page';
+import SausePage from '../pages/sauce.page';
+import PizzaPage from '../pages/pizza.page';
 import OrderPage from '../pages/order.page';
 import Banner from '../pages/components/banner';
 
@@ -24,7 +25,7 @@ export const App = () => {
             <Route path="/mainPage" component={MainPage}/>
             <Route path="/pizza" component={PizzaPage}/>
             <Route path="/order" component={OrderPage}/>
-            <Route path="/sauces" component={PizzaPage}/>
+            <Route path="/sauces" component={SausePage}/>
             <Route path="*" component={MainPage}/>
           </Switch>
         </div>
