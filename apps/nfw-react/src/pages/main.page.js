@@ -1,11 +1,10 @@
 import React from "react";
-import Banner from "./components/banner"
-import PizzaRender from "./components/pizza.render";
+import PizzaListRender from "./components/pizza.list.render";
 
 function MainPage() {
     return (
         <div>
-            <PizzaRender></PizzaRender>
+            <PizzaListRender></PizzaListRender>
         </div>
     )
 }

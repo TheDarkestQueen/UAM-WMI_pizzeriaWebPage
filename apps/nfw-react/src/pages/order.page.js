@@ -1,11 +1,10 @@
 import React from "react";
-import Banner from "./components/banner"
-import PizzaRender from "./components/pizza.render";
+import OrderListRender from "./components/order";
 
 function OrderPage() {
     return (
         <div>
-
+            <OrderListRender></OrderListRender>
         </div>
     )
 }

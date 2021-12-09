@@ -1,10 +1,11 @@
 import React from "react";
 import {useDispatch, useSelector} from 'react-redux'
-import {getPizzaList, getIngredientList} from '../redux/actions/pizza.actions'
+import {getPizzaList, getIngredientList, removePizzaFromOrder, makeOrder} from '../redux/actions/pizza.actions'
 import pizzaImg from '../assets/pizza1.jpg'
 import { useEffect, useState } from "react";
+import { bindActionCreators } from "redux";
 
-function PizzaRender() {
+function OrderListRender() {
 
     const dispatch = useDispatch();
     const data = useSelector(state => state.pizzaReducer)
@@ -12,6 +13,7 @@ function PizzaRender() {
     useEffect(() => {
         dispatch(getPizzaList(dispatch));
         dispatch(getIngredientList(dispatch));
+        console.log(data.order);
     }, [])
 
     function IngredientsOnPizza(pizza) {
@@ -30,7 +32,7 @@ function PizzaRender() {
         <div>
             <section className="list-sector">
                 <ul className="pizza-list">
-                    {data.pizzaList.map(pizza => (
+                    {data.order.pizza.map(pizza => (
                         <li key={pizza.id}>
                             <img className="pizza-img" src={pizzaImg} alt="pizza photo"></img>
                             <div className="pizza-view-button-order">
@@ -43,14 +45,15 @@ function PizzaRender() {
                                     </div>
                                     <div className="pizza-price"> {pizza.price} zł </div>
                                 </div>
-                                <button>Add to order</button>
+                                <button onClick={ () => dispatch(removePizzaFromOrder(pizza)) }>Remove from order</button>
                             </div>
                         </li>
                     ))}
                 </ul>
+                <button className="order-button" onClick={ () => dispatch(makeOrder(dispatch)) }>Make Order</button>
             </section>
         </div>
     )
 }
 
-export default PizzaRender;
+export default OrderListRender;

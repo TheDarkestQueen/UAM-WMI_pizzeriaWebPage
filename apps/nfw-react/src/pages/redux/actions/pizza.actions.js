@@ -19,20 +19,6 @@ export function getIngredientList(dispatch) {
     };
 }
 
-export function addPizzaToOrder(pizza) {
-    return {
-        type: "ADD_PIZZA_TO_ORDER",
-        pizza: pizza
-    };
-}
-
-export function addSauceToOrder(sauce) {
-    return {
-        type: "ADD_SAUCE_TO_ORDER",
-        sauce: sauce
-    };
-}
-
 export function receivePizzaList(pizzaList) {
     return {
         type: "RECEIVE_PIZZA_LIST",
@@ -51,5 +37,46 @@ export function receiveIngredientList(ingredientList) {
     return {
         type: "RECEIVE_INGREDIENT_LIST",
         ingredientList: ingredientList
+    };
+}
+
+export function addPizzaToOrder(pizza) {
+    return {
+        type: "ADD_PIZZA_TO_ORDER",
+        pizza: pizza
+    };
+}
+
+export function addSauceToOrder(sauce) {
+    return {
+        type: "ADD_SAUCE_TO_ORDER",
+        sauce: sauce
+    };
+}
+
+export function removePizzaFromOrder(pizza) {
+    return {
+        type: "REMOVE_PIZZA_FROM_ORDER",
+        pizza: pizza
+    };
+}
+
+export function removeSauceFromOrder(sauce) {
+    return {
+        type: "REMOVE_SAUCE_FROM_ORDER",
+        sauce: sauce
+    };
+}
+
+export function makeOrder(dispatch) {
+    return {
+        type: "MAKE_ORDER",
+        dispatch: dispatch
+    };
+}
+
+export function successfulOrder() {
+    return {
+        type: "SUCCESSFUL_ORDER"
     };
 }
